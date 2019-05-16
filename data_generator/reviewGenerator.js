@@ -9,7 +9,7 @@ var casual = require('casual');
 
 var reviewGenerator = function (numberOfData) {
 
-  console.log('generating ' + numberOfData + ' review(s)...');
+  // console.log('generating ' + numberOfData + ' review(s)...');
   
   res = [];
 
@@ -62,7 +62,7 @@ var reviewGenerator = function (numberOfData) {
     res.push(curData);
   }
 
-  console.log(numberOfData + ' reviews are generated. \n');
+  // console.log(numberOfData + ' reviews are generated. \n');
 
   return res;
 }
