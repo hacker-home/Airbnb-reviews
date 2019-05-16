@@ -8,7 +8,8 @@
   },
   "scripts": {
     "react-dev": "webpack -d --watch",
-    "seed": "node database/schema.js"
+    "seed": "node database/initialize.js",
+    "start": "nodemon server/index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

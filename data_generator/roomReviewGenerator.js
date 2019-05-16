@@ -15,7 +15,7 @@ var roomReviewGenerator = function (numOfRoom) {
     res.push({room_id, reviews: reviewGenerator(numOfReviews)});
   }
 
-  console.log("Generated reviews for " + numOfRoom + " rooms.");
+  console.log("Generating reviews for " + numOfRoom + " rooms...");
 
   return res;
 }
