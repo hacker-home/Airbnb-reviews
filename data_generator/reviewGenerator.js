@@ -9,7 +9,7 @@ var casual = require('casual');
 
 var reviewGenerator = function (numberOfData) {
 
-  console.log('generating ' + numberOfData + ' of review(s)...')
+  console.log('generating ' + numberOfData + ' review(s)...');
   
   res = [];
 
@@ -28,12 +28,12 @@ var reviewGenerator = function (numberOfData) {
     curData['sentence'] = sentence;
     
     //rating_accuracy
-    var accuracy__rating = casual.double(from = 0, to = 5).toFixed(1);
-    curData['accuracy__rating'] = Number(accuracy__rating);
+    var accuracy_rating = casual.double(from = 0, to = 5).toFixed(1);
+    curData['accuracy_rating'] = Number(accuracy_rating);
     
     //rating_communication
-    var communication__rating = casual.double(from = 0, to = 5).toFixed(1);
-    curData['communication__rating'] = Number(communication__rating);
+    var communication_rating = casual.double(from = 0, to = 5).toFixed(1);
+    curData['communication_rating'] = Number(communication_rating);
     
     //rating_cleanliness
     var cleanliness_rating = casual.double(from = 0, to = 5).toFixed(1);
@@ -52,18 +52,17 @@ var reviewGenerator = function (numberOfData) {
     curData['value_rating'] = Number(value_rating);
     
     //overall_rating = ratings above / 6
-    curData['overall_rating'] = Number(((curData.accuracy__rating
-       + curData.communication__rating 
+    curData['overall_rating'] = Number(((curData.accuracy_rating
+       + curData.communication_rating 
        + curData.cleanliness_rating 
        + curData.location_rating 
        + curData.check_in_rating 
        + curData.value_rating) / 6)
        .toFixed(1));
-    //listing_id = 
     res.push(curData);
   }
 
-  console.log(numberOfData + ' reviews are ready.')
+  console.log(numberOfData + ' reviews are generated. \n');
 
   return res;
 }
