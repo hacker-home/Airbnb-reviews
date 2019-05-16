@@ -7,7 +7,7 @@
 
 var casual = require('casual');
 
-var generator = function (numberOfData) {
+var reviewGenerator = function (numberOfData) {
 
   console.log('generating ' + numberOfData + ' of review(s)...')
   
@@ -69,4 +69,4 @@ var generator = function (numberOfData) {
 }
 
 
-module.exports = { generator };
+module.exports = { reviewGenerator };
