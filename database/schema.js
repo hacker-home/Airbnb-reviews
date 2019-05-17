@@ -1,8 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-// mongoose.connect('mongodb://localhost:27017/airbnb', { useNewUrlParser: true });
-var Schema = mongoose.Schema;
-var Reviews = mongoose.model("reviews", new Schema({ room_id: Number, reviews: Array }));
-// mongoose.connection.close();
+const Schema = mongoose.Schema;
+const Reviews = mongoose.model("reviews", new Schema({ room_id: Number, reviews: Array }));
 
 module.exports = { Reviews };

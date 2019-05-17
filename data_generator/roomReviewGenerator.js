@@ -4,20 +4,20 @@
  * Output: Array of array of reviews
  */
 
-var { reviewGenerator } = require('./reviewGenerator.js');
-var casual = require('casual');
+const casual = require('casual');
+const { reviewGenerator } = require('./reviewGenerator.js');
 
-var roomReviewGenerator = function (numOfRoom) {
-  var res = [];
-  for (var i = 0; i < numOfRoom; i++) {
-    var numOfReviews = casual.integer(from = 3, to = 500);
-    var room_id = i + 1;
-    res.push({room_id, reviews: reviewGenerator(numOfReviews)});
+const roomReviewGenerator = function (numOfRoom) {
+  let res = [];
+  for (let i = 0; i < numOfRoom; i += 1) {
+    let numOfReviews = casual.integer(from = 3, to = 500);
+    let room_id = i + 1;
+    res.push({ room_id, reviews: reviewGenerator(numOfReviews) });
   }
 
-  console.log("Generating reviews for " + numOfRoom + " rooms...");
+  console.log(`Generating reviews for ${numOfRoom} rooms...`);
 
   return res;
-}
+};
 
 module.exports = { roomReviewGenerator };
