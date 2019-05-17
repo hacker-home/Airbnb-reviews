@@ -7,7 +7,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "react-dev": "webpack -d --watch",
+    "react-dev": "webpack -d --watch --mode production --module-bind js=babel-loader",
     "bulbasaur": "node database/initializer.js",
     "start": "nodemon server/index.js"
   },
