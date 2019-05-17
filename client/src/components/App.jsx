@@ -8,7 +8,7 @@ class App extends React.Component {
       rev_data: [],
       room_id: 1
     }
-  }
+  };
 
   componentDidMount() {
     axios.get(`http://localhost:3001/reviews/?room_id=${this.state.room_id}`)
@@ -19,14 +19,14 @@ class App extends React.Component {
       })
       .catch((err) => {
         console.log(err);
-      })
-  }
+      });
+  };
 
   render() {
     return (
       <div className="rew_board">{console.log(this.state.rev_data)}</div>
     )
-  }
+  };
 }
 
 export default App;
