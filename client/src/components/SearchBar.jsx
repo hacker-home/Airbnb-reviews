@@ -8,7 +8,7 @@ class SearchBar extends React.Component {
 
   render() {
     return (
-      <span>
+      <span className="searchBar">
         <input type="text"></input>
         <input type="submit"></input>
       </span>
