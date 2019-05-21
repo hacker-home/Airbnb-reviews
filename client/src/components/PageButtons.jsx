@@ -9,10 +9,10 @@ class PageButtons extends React.Component {
   render() {
     let curPage = this.props.curPage;
     let totalPages = this.props.data.length;
-    let isReview = this.props.data[0].length;
+    let isReviewed = this.props.data[0].length;
     let changePage = this.props.changePage;
     return (
-      <div>{buttonRender(curPage, totalPages, isReview, changePage)}</div>
+      <div>{buttonRender(curPage, totalPages, isReviewed, changePage)}</div>
     )
   }
 }
