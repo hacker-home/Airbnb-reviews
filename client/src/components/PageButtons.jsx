@@ -5,7 +5,7 @@ class PageButtons extends React.Component {
   }
 
 
-  //<PageButtons curPage={this.state.curPage} data={this.props.data} changePage={this.changePage.bind(this)/>
+  //Props from parent: <PageButtons curPage={this.state.curPage} data={this.props.data} changePage={this.changePage.bind(this)/>
   render() {
     let curPage = this.props.curPage;
     let totalPages = this.props.data.length;

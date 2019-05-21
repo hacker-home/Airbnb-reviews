@@ -7,6 +7,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      original_data: [[]],
       rev_data: [[]],
       room_id: 1,
       ratings: {},
@@ -62,6 +63,7 @@ class App extends React.Component {
       dataForPages.push(rev_data.slice(7 * i, 7 * (i+1)));
     };
     this.setState({
+      original_data: dataForPages,
       rev_data: dataForPages,
     });
   }
