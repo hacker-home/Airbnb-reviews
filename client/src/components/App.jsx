@@ -7,20 +7,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      original_data: [[]],
+      original_data: [],
       rev_data: [[]],
       room_id: 1,
       ratings: {},
       num_reviews: 0,
+      search_text: "",
     }
+    this.editSearchText = this.editSearchText.bind(this);
   };
 
-
+  // fetch data while enter the website
   componentDidMount() {
     axios.get(`http://localhost:3001/reviews/?room_id=${this.state.room_id}`)
       .then((response) => {
         this.dataSlicer(response.data[0].reviews);
         this.setState({
+          original_data: response.data[0].reviews,
           num_reviews: response.data[0].reviews.length,
         });
         this.findOverallRating(response.data[0].reviews);
@@ -30,6 +33,7 @@ class App extends React.Component {
       });
   };
 
+  //calculate average ratings over all reviews
   findOverallRating(rev_array) {
     let sum_rating = {
       accuracy: 0,
@@ -56,28 +60,45 @@ class App extends React.Component {
     });
   }
 
+  // slice data into 7 reviews per array. and store in rev_data
   dataSlicer(rev_data) {
     let totalPages = Math.ceil(rev_data.length / 7);
     let dataForPages = [];
     for (let i = 0; i < totalPages; i++) {
-      dataForPages.push(rev_data.slice(7 * i, 7 * (i+1)));
+      dataForPages.push(rev_data.slice(7 * i, 7 * (i + 1)));
     };
     this.setState({
-      original_data: dataForPages,
       rev_data: dataForPages,
     });
   }
 
+  // showSearchResult(result) {
+  //   this.setState({
+  //     rev_data: result,
+  //   })
+  // }
+
+  editSearchText(e) {
+    e.preventDefault();
+    this.setState({
+      search_text: e.target.value,
+    })
+  }
 
   render() {
     return (
       <div className="rew_board">
-        <div className='rev_count'>{this.state.num_reviews} reviews <SearchBar /></div>
+        <div className='rev_count'>{this.state.num_reviews} reviews
+        <SearchBar original_data={this.state.original_data} 
+            editSearchText={this.editSearchText} 
+            dataSlicer={this.dataSlicer.bind(this)}
+            search_text={this.state.search_text}/>
+        </div>
         <div className='ratingTable'>
           <RatingTable ratings={this.state.ratings} />
         </div>
         <div className='review_table'>
-          <ReviewRender data={this.state.rev_data}/>
+          <ReviewRender data={this.state.rev_data} />
         </div>
       </div>
     )
