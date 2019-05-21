@@ -1,0 +1,66 @@
+
+/* element.style {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-right: 0;
+} */
+
+body {
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  font-size: 14px;
+  line-height: 1.43;
+  color: #484848;
+  background-color: #fff;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: block;
+}
+
+div {
+  display: block;
+}
+
+.rating_left {
+  width: 50% !important;
+  float: left !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  min-height: 1px !important;
+  position: relative !important;
+}
+.rating_right {
+  width: 50% !important;
+  float: left !important;
+  padding-left: 8px !important;
+  padding-right: 8px !important;
+  min-height: 1px !important;
+  position: relative !important;
+}
+
+.searchBar {
+  font-size: var(--font-form-element-font-size, 16px) !important;
+    line-height: var(--font-form-element-line-height, 24px) !important;
+    letter-spacing: var(--font-form-element-letter-spacing, normal) !important;
+    font-family: var(--font-form-element-font-family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
+    text-transform: var(--font-form-element-text-transform, undefined) !important;
+    color: #484848 !important;
+    padding-top: var(--spacing-form-element-vertical, 11px) !important;
+    padding-bottom: var(--spacing-form-element-vertical, 11px) !important;
+    font-weight: var(--font-light-font-weight, normal) !important;
+    background-color: transparent !important;
+    padding-left: var(--spacing-form-element-horizontal, 11px) !important;
+    padding-right: var(--spacing-form-element-horizontal, 11px) !important;
+}
+
+.profile_picture {
+  width: 48px;
+  height: 48px;
+  display: table-cell;
+  border: solid 1px;
+  border-radius: 50%;
+}

@@ -10,9 +10,9 @@ const PORT = 3001;
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/reviews', (req, res) => {
+app.get('/reviews/', (req, res) => {
   mongoose.connect('mongodb://localhost:27017/airbnb', { useNewUrlParser: true });
-  const target = {room_id: req.body.room_id};
+  const target = {room_id: req.query.room_id};
   db.Reviews.find(target)
     .then((data) => {
       mongoose.connection.close();
