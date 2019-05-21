@@ -72,12 +72,6 @@ class App extends React.Component {
     });
   }
 
-  // showSearchResult(result) {
-  //   this.setState({
-  //     rev_data: result,
-  //   })
-  // }
-
   editSearchText(e) {
     e.preventDefault();
     this.setState({
@@ -98,7 +92,7 @@ class App extends React.Component {
           <RatingTable ratings={this.state.ratings} />
         </div>
         <div className='review_table'>
-          <ReviewRender data={this.state.rev_data} />
+          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text}/>
         </div>
       </div>
     )

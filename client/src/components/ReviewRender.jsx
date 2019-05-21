@@ -8,7 +8,7 @@ class ReviewRender extends React.Component {
       curPage: 0
     }
   }
-
+//<ReviewRender data={this.state.rev_data} search_text={this.state.search_text}/>
   changePage(e) {
     e.preventDefault();
     if(e.target.value === "<") {
@@ -33,7 +33,7 @@ class ReviewRender extends React.Component {
       <div>
         <div>
           {this.props.data[this.state.curPage].map((item) => {
-            return <ShowOneReview key={item.id + 'rev'} review={item} />
+            return <ShowOneReview key={item.id + 'rev'} review={item} search_text={this.props.search_text}/>
           })}
         </div>
         <PageButtons curPage={this.state.curPage} data={this.props.data} changePage={this.changePage.bind(this)}/>

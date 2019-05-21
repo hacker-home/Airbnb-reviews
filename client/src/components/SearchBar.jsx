@@ -11,7 +11,6 @@ class SearchBar extends React.Component {
 
   submitSearch(e) {
     e.preventDefault();
-    console.log('here')
     let res = [];
     const data = this.props.original_data;
     const search_text = this.props.search_text;
