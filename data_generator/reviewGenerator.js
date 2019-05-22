@@ -8,7 +8,7 @@
 const casual = require('casual');
 
 const reviewGenerator = function (numberOfData) {
-  res = [];
+  let res = [];
 
   for (let i = 0; i < numberOfData; i++) {
     const curData = {};
@@ -21,7 +21,8 @@ const reviewGenerator = function (numberOfData) {
     curData.name = name;
 
     // date
-    const date = casual.date(formate = 'YYYY-MMMM');
+    let formate = 'YYYY-MMMM';
+    const date = casual.date(formate);
     curData.date = date;
 
     // sentence
@@ -29,27 +30,29 @@ const reviewGenerator = function (numberOfData) {
     curData.sentence = sentence;
 
     // rating_accuracy
-    const accuracy_rating = casual.double(from = 0, to = 5).toFixed(1);
+    let from = 0;
+    let to = 5;
+    const accuracy_rating = casual.double(from, to).toFixed(1);
     curData.accuracy_rating = Number(accuracy_rating);
 
     // rating_communication
-    const communication_rating = casual.double(from = 0, to = 5).toFixed(1);
+    const communication_rating = casual.double(from, to).toFixed(1);
     curData.communication_rating = Number(communication_rating);
 
     // rating_cleanliness
-    const cleanliness_rating = casual.double(from = 0, to = 5).toFixed(1);
+    const cleanliness_rating = casual.double(from, to).toFixed(1);
     curData.cleanliness_rating = Number(cleanliness_rating);
 
     // rating_location
-    const location_rating = casual.double(from = 0, to = 5).toFixed(1);
+    const location_rating = casual.double(from, to).toFixed(1);
     curData.location_rating = Number(location_rating);
 
     // rating_check_in
-    const check_in_rating = casual.double(from = 0, to = 5).toFixed(1);
+    const check_in_rating = casual.double(from, to).toFixed(1);
     curData.check_in_rating = Number(check_in_rating);
 
     // rating_value
-    const value_rating = casual.double(from = 0, to = 5).toFixed(1);
+    const value_rating = casual.double(from, to).toFixed(1);
     curData.value_rating = Number(value_rating);
 
     // overall_rating = ratings above / 6
