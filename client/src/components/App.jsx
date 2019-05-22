@@ -15,6 +15,7 @@ class App extends React.Component {
       search_text: "",
     }
     this.editSearchText = this.editSearchText.bind(this);
+    this.clearSearchText = this.clearSearchText.bind(this);
   };
 
   // fetch data while enter the website
@@ -79,6 +80,14 @@ class App extends React.Component {
     })
   }
 
+  clearSearchText(e) {
+    e.preventDefault();
+    this.setState({
+      search_text: "",
+    })
+    document.getElementById("searchTextArea").value = "";
+  }
+
   render() {
     return (
       <div className="rew_board">
@@ -86,7 +95,8 @@ class App extends React.Component {
         <SearchBar original_data={this.state.original_data} 
             editSearchText={this.editSearchText} 
             dataSlicer={this.dataSlicer.bind(this)}
-            search_text={this.state.search_text}/>
+            search_text={this.state.search_text}
+            clearSearchText={this.clearSearchText}/>
         </div>
         <div className='ratingTable'>
           <RatingTable ratings={this.state.ratings} />

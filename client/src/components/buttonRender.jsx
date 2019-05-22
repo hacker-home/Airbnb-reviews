@@ -2,7 +2,7 @@ let buttonRender = function (curPage, totalPages, isReview, changePage) {
 
   //  Edge case: if no reviews, Print out "No reviews" and exit buttonRender
   if (!isReview) {
-    return (<span>No reviews</span>);
+    return (<span></span>);
   };
 
   //  leftButtons function: 

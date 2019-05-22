@@ -6,8 +6,9 @@ class SearchBar extends React.Component {
   //           showSearchResult={this.showSearchResult}
   //           editSearchText={this.editSearchText} 
   //           dataSlicer={this.dataSlicer.bind(this)}
-  //           search_text={this.state.search_text}/>
-  
+  //           search_text={this.state.search_text}
+  //           clearSearchText={this.clearSearchText}/>
+
 
   submitSearch(e) {
     e.preventDefault();
@@ -15,7 +16,7 @@ class SearchBar extends React.Component {
     const data = this.props.original_data;
     const search_text = this.props.search_text;
     data.forEach((item) => {
-      if(item.sentence.indexOf(search_text) >= 0) {
+      if (item.sentence.indexOf(search_text) >= 0) {
         res.push(item);
       }
     });
@@ -23,13 +24,28 @@ class SearchBar extends React.Component {
   }
 
   render() {
-    return (
-      <span className="searchBar">
-        <form onSubmit={this.submitSearch.bind(this)}>
-          <input type="text" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
-        </form>
-      </span>
-    )
+    if(this.props.search_text.length === 0) {
+      return (
+        <span className="searchBar">
+          <span>
+            <form onSubmit={this.submitSearch.bind(this)}>
+              <input type="text" id="searchTextArea" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
+            </form>
+          </span>
+        </span>
+      )
+    } else {
+      return (
+        <span className="searchBar">
+          <span>
+            <form onSubmit={this.submitSearch.bind(this)}>
+              <input type="text" id="searchTextArea" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
+            </form>
+          </span>
+          <button onClick={this.props.clearSearchText}>X</button>
+        </span>
+      )
+    }
   }
 }
 

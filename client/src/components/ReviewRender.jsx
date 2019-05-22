@@ -29,18 +29,22 @@ class ReviewRender extends React.Component {
   }
 
   render() {
-    return (
-      <div>
+    if(this.props.data[this.state.curPage]) {
+      return (
         <div>
-          {this.props.data[this.state.curPage].map((item) => {
-            return <ShowOneReview key={item.id + 'rev'} review={item} search_text={this.props.search_text}/>
-          })}
+          <div>
+            {this.props.data[this.state.curPage].map((item) => {
+              return <ShowOneReview key={item.id + 'rev'} review={item} search_text={this.props.search_text}/>
+            })}
+          </div>
+          <PageButtons curPage={this.state.curPage} data={this.props.data} changePage={this.changePage.bind(this)}/>
+          <br/>
+          <br/>
         </div>
-        <PageButtons curPage={this.state.curPage} data={this.props.data} changePage={this.changePage.bind(this)}/>
-        <br/>
-        <br/>
-      </div>
-    );
+      );
+    } else {
+      return (<div>None of our guests have mentioned: "<strong>{this.props.search_text}</strong>"</div>)
+    }
   }
 }
 
