@@ -1,4 +1,5 @@
-import Highlighter from 'react-highlight-words';
+// import Highlighter from 'react-highlight-words';
+import Highlighter from './Highlighter.jsx'
 class ShowOneReview extends React.Component {
   constructor(props) {
     super(props);
@@ -8,7 +9,7 @@ class ShowOneReview extends React.Component {
     let target = this.props.search_text;
     let sentence = this.props.review.sentence;
     if(target === "") {
-      return <div key={this.props.review.id+'r'}>{ sentence }</div>
+      return <div key={this.props.review.id+'r'}>{ sentence }</div> //TODO: if more than 50 words-> ...ReadMorre
     } else {
       return (
         <Highlighter highlightClassName="highlighted"
