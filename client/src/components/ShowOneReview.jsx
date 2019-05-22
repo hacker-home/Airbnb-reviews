@@ -12,10 +12,8 @@ class ShowOneReview extends React.Component {
       return <div key={this.props.review.id+'r'}>{ sentence }</div> //TODO: if more than 50 words-> ...ReadMorre
     } else {
       return (
-        <Highlighter highlightClassName="highlighted"
-        searchWords={[target]}
-        autoEscape={true}
-        highlightTag={Highlight}
+        <Highlighter id={this.props.review.id}
+        searchWords={target}
         textToHighlight={sentence}/>
       )
     }
@@ -33,8 +31,6 @@ class ShowOneReview extends React.Component {
   }
 }
 
-const Highlight = ({ children, highlightIndex }) => (
-  <strong className="highlighted-text">{children}</strong>
-);
+
 
 export default ShowOneReview;

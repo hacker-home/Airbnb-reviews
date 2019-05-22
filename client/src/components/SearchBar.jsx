@@ -16,7 +16,8 @@ class SearchBar extends React.Component {
     const data = this.props.original_data;
     const search_text = this.props.search_text;
     data.forEach((item) => {
-      if (item.sentence.indexOf(search_text) >= 0) {
+      let words = item.sentence.split(/\b/);
+      if(words.indexOf(search_text) >= 0) {
         res.push(item);
       }
     });
