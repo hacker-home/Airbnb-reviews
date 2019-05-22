@@ -10,7 +10,7 @@
     "react-dev": "webpack -d --watch --mode production --module-bind js=babel-loader",
     "bulbasaur": "node database/initializer.js",
     "start": "nodemon server/index.js",
-    "test": "jest"
+    "test": "jest test/test.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
