@@ -3,8 +3,12 @@ const { reviewGenerator } = require('../data_generator/reviewGenerator')
 /**
  * testing reviewGenerator
 */
+test('Should return an empty array', () => {
+  expect(reviewGenerator(0)).toHaveLength(0);
+});
+
 test('Should create one review', () => {
-  expect(reviewGenerator(1).length).toBe(1);
+  expect(reviewGenerator(1)).toHaveLength(1);
 });
 
 test('Should generate a random name', () => {
