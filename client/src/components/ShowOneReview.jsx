@@ -1,5 +1,8 @@
 // import Highlighter from 'react-highlight-words';
 import Highlighter from './Highlighter.jsx'
+
+const CHAR_THRESHOLD = 250;
+const WORDS_THRESHOLD = 50;
 class ShowOneReview extends React.Component {
   constructor(props) {
     super(props);
@@ -21,7 +24,7 @@ class ShowOneReview extends React.Component {
     if(target === "") {
 
       //if sentence is short, return whole sentence
-      if(sentence.length < 250 || sentence.split(' ') < 50 || this.state.show_content) {
+      if(sentence.length < CHAR_THRESHOLD || sentence.split(' ') < WORDS_THRESHOLD || this.state.show_content) {
         return <div key={this.props.review.id+'r'}>{ sentence }</div>
       } else {
         let sentenceArr = sentence.split(/\b/);
