@@ -15,6 +15,11 @@ class SearchBar extends React.Component {
     let res = [];
     const data = this.props.original_data;
     const search_text = this.props.search_text;
+    //edge case: if search_text is empty
+    if (search_text === '') {
+      this.props.dataSlicer(data);
+      return;
+    }
     data.forEach((item) => {
       let words = item.sentence.split(/\b/);
       if(words.indexOf(search_text) >= 0) {
@@ -36,6 +41,7 @@ class SearchBar extends React.Component {
         </span>
       )
     } else {
+      //show cancellation button while the text bar in not empty
       return (
         <span className="searchBar">
           <span>

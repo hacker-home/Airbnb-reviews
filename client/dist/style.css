@@ -64,3 +64,11 @@ div {
   border: solid 1px;
   border-radius: 50%;
 }
+
+.readmore {
+  color: #008489;
+}
+.readmore:hover {
+  text-decoration:underline;
+  cursor: pointer;
+}

@@ -123,6 +123,9 @@ let buttonRender = function (curPage, totalPages, isReview, changePage) {
   // 1) if current page = last page, only show last page button;
   // 2) else: show last page button and ">" button
   let rightButtons = function (curPage) {
+    if(totalPages === 1) {
+      return;
+    }
     if (curPage === totalPages - 1) {
       return <input type="button" value={totalPages} onClick={changePage}></input>
     } else {

@@ -3,13 +3,45 @@ import Highlighter from './Highlighter.jsx'
 class ShowOneReview extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      show_content: false,
+    }
+  }
+
+  showContent(e) {
+    e.preventDefault();
+    this.setState({
+      show_content: true,
+    })
   }
   
   handleSearchTextInSentence(){
     let target = this.props.search_text;
     let sentence = this.props.review.sentence;
     if(target === "") {
-      return <div key={this.props.review.id+'r'}>{ sentence }</div> //TODO: if more than 50 words-> ...ReadMorre
+
+      //if sentence is short, return whole sentence
+      if(sentence.length < 250 || sentence.split(' ') < 50 || this.state.show_content) {
+        return <div key={this.props.review.id+'r'}>{ sentence }</div>
+      } else {
+        let sentenceArr = sentence.split(/\b/);
+        let newSentence = '';
+        for (let i = 0; i < 60; i++) {
+          newSentence += sentenceArr[i];
+        }
+        newSentence += '...'
+        return (
+          <div key={this.props.review.id+'r'}>{newSentence}
+          <span className='readmore' key ={this.props.review.id + 'rdm'} onClick={this.showContent.bind(this)}>
+            Read more
+          </span>
+          </div>
+        )
+      }
+    
+    
+    
+    
     } else {
       return (
         <Highlighter id={this.props.review.id}

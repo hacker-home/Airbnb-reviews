@@ -84,8 +84,9 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({
       search_text: "",
-    })
+    });
     document.getElementById("searchTextArea").value = "";
+    this.dataSlicer(this.state.original_data);
   }
 
   render() {
