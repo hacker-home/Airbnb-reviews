@@ -21,7 +21,7 @@ const reviewGenerator = function (numberOfData) {
     curData.name = name;
 
     // date
-    let formate = 'YYYY-MMMM';
+    let formate = 'MMMM YYYY';
     const date = casual.date(formate);
     curData.date = date;
 

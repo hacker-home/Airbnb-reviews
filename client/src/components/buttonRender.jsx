@@ -1,5 +1,5 @@
 let buttonRender = function (curPage, totalPages, isReview, changePage) {
-
+  const curPageStyle = {background:'#008489', color:'white'}
   //  Edge case: if no reviews, Print out "No reviews" and exit buttonRender
   if (!isReview) {
     return (<span></span>);
@@ -10,12 +10,12 @@ let buttonRender = function (curPage, totalPages, isReview, changePage) {
   //  2) if current page is not the first page, return both "<" and "1" button
   let leftButtons = function (curPage) {
     if (curPage === 0) {
-      return (<input type="button" value="1" onClick={changePage}></input>)
+      return (<input style={curPageStyle} className="pageButton" type="button" value="1" onClick={changePage}></input>)
     } else {
       return (
         <span>
-          <input type="button" value="<" onClick={changePage}></input>
-          <input type="button" value="1" onClick={changePage}></input>
+          <input className="arrowButton" type="button" value="<" onClick={changePage}></input>
+          <input className="pageButton" type="button" value="1" onClick={changePage}></input>
         </span>
       )
     }
@@ -29,61 +29,92 @@ let buttonRender = function (curPage, totalPages, isReview, changePage) {
     if (totalPages < 3) {
       return;
     } else if (totalPages === 3) {
-      return <input type="button" value="2" onClick={changePage}></input>;
+      if(curPage !== 1) {
+        return <input className="pageButton" type="button" value="2" onClick={changePage}></input>;
+      } else {
+        return <input style={curPageStyle} className="pageButton" type="button" value="2" onClick={changePage}></input>;
+      }
     } else if (totalPages === 4) {
+      if(curPage !== 1 || curPage !== 2) {
       return (<span>
-        <input type="button" value="2" onClick={changePage}></input>
-        <input type="button" value="3" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="2" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="3" onClick={changePage}></input>
       </span>);
+      } else if (curPage === 1) {
+        return (<span>
+          <input style={curPageStyle} className="pageButton" type="button" value="2" onClick={changePage}></input>
+          <input className="pageButton" type="button" value="3" onClick={changePage}></input>
+        </span>);
+      } else if (curPage === 2) {
+        return (<span>
+          <input className="pageButton" type="button" value="2" onClick={changePage}></input>
+          <input style={curPageStyle} className="pageButton" type="button" value="3" onClick={changePage}></input>
+        </span>);
+      }
     } else if (totalPages === 5 && curPage === 2) {
       return (<span>
-        <input type="button" value="2" onClick={changePage}></input>
-        <input type="button" value="3" onClick={changePage}></input>
-        <input type="button" value="4" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="2" onClick={changePage}></input>
+        <input style={curPageStyle} className="pageButton" type="button" value="3" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="4" onClick={changePage}></input>
       </span>);
     } else if (totalPages === 6 && curPage === 3) {
       return (<span>
-        <input type="button" value="2" onClick={changePage}></input>
-        <input type="button" value="3" onClick={changePage}></input>
-        <input type="button" value="4" onClick={changePage}></input>
-        <input type="button" value="5" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="2" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="3" onClick={changePage}></input>
+        <input style={curPageStyle} className="pageButton" type="button" value="4" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="5" onClick={changePage}></input>
       </span>);
     }
 
     //if curPage is the first page
-    if (curPage === 0 || curPage === 1) {
+    if (curPage === 0) {
       //case 4:  more than 4 pages -> return 2 middle pages and "⋯"
       return (<span>
-        <input type="button" value="2" onClick={changePage}></input>
-        <input type="button" value="3" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="2" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="3" onClick={changePage}></input>
+        <span>⋯</span>
+      </span>);
+    }
+    if (curPage === 1) {
+      //case 4:  more than 4 pages -> return 2 middle pages and "⋯"
+      return (<span>
+        <input style={curPageStyle} className="pageButton" type="button" value="2" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="3" onClick={changePage}></input>
         <span>⋯</span>
       </span>);
     }
 
     // TODO: if curPage is last page
-    if (curPage === totalPages - 1 || curPage === totalPages - 2) {
+    if (curPage === totalPages - 1) {
       return (<span>
         <span>⋯</span>
-        <input type="button" value={totalPages - 2} onClick={changePage}></input>
-        <input type="button" value={totalPages - 1} onClick={changePage}></input>
+        <input className="pageButton" type="button" value={totalPages - 2} onClick={changePage}></input>
+        <input className="pageButton" type="button" value={totalPages - 1} onClick={changePage}></input>
+      </span>);
+    }
+    if (curPage === totalPages - 2) {
+      return (<span>
+        <span>⋯</span>
+        <input className="pageButton" type="button" value={totalPages - 2} onClick={changePage}></input>
+        <input style={curPageStyle} className="pageButton" type="button" value={totalPages - 1} onClick={changePage}></input>
       </span>);
     }
 
     // TODO: 1st page < curPage < totalPages
     if (curPage === 2) {
       return (<span>
-        <input type="button" value="2" onClick={changePage}></input>
-        <input type="button" value="3" onClick={changePage}></input>
-        <input type="button" value="4" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="2" onClick={changePage}></input>
+        <input style={curPageStyle} className="pageButton" type="button" value="3" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="4" onClick={changePage}></input>
         <span>⋯</span>
       </span>
       )
     } else if (curPage === 3) {
       return (<span>
-        <input type="button" value="2" onClick={changePage}></input>
-        <input type="button" value="3" onClick={changePage}></input>
-        <input type="button" value="4" onClick={changePage}></input>
-        <input type="button" value="5" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="2" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="3" onClick={changePage}></input>
+        <input style={curPageStyle} className="pageButton" type="button" value="4" onClick={changePage}></input>
+        <input className="pageButton" type="button" value="5" onClick={changePage}></input>
         <span>⋯</span>
       </span>
       )
@@ -91,28 +122,28 @@ let buttonRender = function (curPage, totalPages, isReview, changePage) {
       return (
         <span>
           <span>⋯</span>
-          <input type="button" value={totalPages - 3} onClick={changePage}></input>
-          <input type="button" value={totalPages - 2} onClick={changePage}></input>
-          <input type="button" value={totalPages - 1} onClick={changePage}></input>
+          <input className="pageButton" type="button" value={totalPages - 3} onClick={changePage}></input>
+          <input style={curPageStyle} className="pageButton" type="button" value={totalPages - 2} onClick={changePage}></input>
+          <input className="pageButton" type="button" value={totalPages - 1} onClick={changePage}></input>
         </span>
       );
     } else if (curPage === totalPages - 4) {
       return (
         <span>
           <span>⋯</span>
-          <input type="button" value={totalPages - 4} onClick={changePage}></input>
-          <input type="button" value={totalPages - 3} onClick={changePage}></input>
-          <input type="button" value={totalPages - 2} onClick={changePage}></input>
-          <input type="button" value={totalPages - 1} onClick={changePage}></input>
+          <input className="pageButton" type="button" value={totalPages - 4} onClick={changePage}></input>
+          <input style={curPageStyle} className="pageButton" type="button" value={totalPages - 3} onClick={changePage}></input>
+          <input className="pageButton" type="button" value={totalPages - 2} onClick={changePage}></input>
+          <input className="pageButton" type="button" value={totalPages - 1} onClick={changePage}></input>
         </span>
       );
     } else {
       return (
         <span>
           <span>⋯</span>
-          <input type="button" value={curPage} onClick={changePage}></input>
-          <input type="button" value={curPage + 1} onClick={changePage}></input>
-          <input type="button" value={curPage + 2} onClick={changePage}></input>
+          <input className="pageButton" type="button" value={curPage} onClick={changePage}></input>
+          <input style={curPageStyle} className="pageButton" type="button" value={curPage + 1} onClick={changePage}></input>
+          <input className="pageButton" type="button" value={curPage + 2} onClick={changePage}></input>
           <span>⋯</span>
         </span>
       )
@@ -127,17 +158,17 @@ let buttonRender = function (curPage, totalPages, isReview, changePage) {
       return;
     }
     if (curPage === totalPages - 1) {
-      return <input type="button" value={totalPages} onClick={changePage}></input>
+      return <input style={curPageStyle} className="pageButton" type="button" value={totalPages} onClick={changePage}></input>
     } else {
       return (<span>
-        <input type="button" value={totalPages} onClick={changePage}></input>
-        <input type="button" value=">" onClick={changePage}></input>
+        <input className="pageButton" type="button" value={totalPages} onClick={changePage}></input>
+        <input className="arrowButton" type="button" value=">" onClick={changePage}></input>
       </span>
       )
     }
   }
 
-  return (<div>
+  return (<div className="pageButtonBar">
     {leftButtons(curPage)}
     {middleButtons(curPage)}
     {rightButtons(curPage)}

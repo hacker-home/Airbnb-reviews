@@ -91,7 +91,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="rew_board">
+      <div className="rew_board" >
         <div className='rev_count'>{this.state.num_reviews} reviews
         <SearchBar original_data={this.state.original_data} 
             editSearchText={this.editSearchText} 

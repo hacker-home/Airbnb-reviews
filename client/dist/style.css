@@ -25,21 +25,17 @@ div {
   display: block;
 }
 
+.rew_board {
+  display:inline-block;
+  width:100%;
+  vertical-align:bottom;
+}
+
 .rating_left {
-  width: 50% !important;
-  float: left !important;
-  padding-left: 8px !important;
-  padding-right: 8px !important;
-  min-height: 1px !important;
-  position: relative !important;
+  width: 50%;
 }
 .rating_right {
-  width: 50% !important;
-  float: left !important;
-  padding-left: 8px !important;
-  padding-right: 8px !important;
-  min-height: 1px !important;
-  position: relative !important;
+  width: 50%;
 }
 
 .searchBar {
@@ -58,17 +54,51 @@ div {
 }
 
 .profile_picture {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   display: table-cell;
-  border: solid 1px;
+  border: solid white 2px;
   border-radius: 50%;
+  background: #008489;
 }
 
 .readmore {
   color: #008489;
 }
 .readmore:hover {
+  text-decoration:underline;
+  cursor: pointer;
+}
+
+
+.pageButtonBar{
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  padding-inline-start: 40px;
+}
+.arrowButton {
+  width: 32px;
+  height: 32px;
+  color: #008489;
+  border: solid #008489 1px;
+  border-radius: 50%;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.arrowButton:hover {
+  cursor: pointer;
+}
+
+.pageButton {
+  width: 32px;
+  height: 32px;
+  color: #008489;
+  border: transparent 1px;
+  border-radius: 50%;
+  margin-left: 8px;
+  margin-right: 8px;
+}
+.pageButton:hover {
   text-decoration:underline;
   cursor: pointer;
 }
