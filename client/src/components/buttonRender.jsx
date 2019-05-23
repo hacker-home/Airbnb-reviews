@@ -14,7 +14,7 @@ let buttonRender = function (curPage, totalPages, isReview, changePage) {
     } else {
       return (
         <span>
-          <input className="arrowButton" type="button" value="<" onClick={changePage}></input>
+          <input className="arrowButton" type="button" value="＜" onClick={changePage}></input>
           <input className="pageButton" type="button" value="1" onClick={changePage}></input>
         </span>
       )
@@ -162,7 +162,7 @@ let buttonRender = function (curPage, totalPages, isReview, changePage) {
     } else {
       return (<span>
         <input className="pageButton" type="button" value={totalPages} onClick={changePage}></input>
-        <input className="arrowButton" type="button" value=">" onClick={changePage}></input>
+        <input className="arrowButton" type="button" value="＞" onClick={changePage}></input>
       </span>
       )
     }

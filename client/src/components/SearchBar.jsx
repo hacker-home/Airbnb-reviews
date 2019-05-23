@@ -35,7 +35,7 @@ class SearchBar extends React.Component {
         <span className="searchBar">
           <span>
             <form onSubmit={this.submitSearch.bind(this)}>
-              <input type="text" id="searchTextArea" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
+              <input className="searchTextArea" type="text" id="searchTextArea" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
             </form>
           </span>
         </span>
@@ -46,10 +46,10 @@ class SearchBar extends React.Component {
         <span className="searchBar">
           <span>
             <form onSubmit={this.submitSearch.bind(this)}>
-              <input type="text" id="searchTextArea" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
+              <input className="searchTextArea" type="text" id="searchTextArea" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
             </form>
           </span>
-          <button onClick={this.props.clearSearchText}>X</button>
+          <button className="cancelSearchButton" onClick={this.props.clearSearchText}>X</button>
         </span>
       )
     }

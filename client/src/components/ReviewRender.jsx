@@ -11,12 +11,12 @@ class ReviewRender extends React.Component {
 
   changePage(e) {
     e.preventDefault();
-    if (e.target.value === "<") {
+    if (e.target.value === "＜") {
       this.setState({
         curPage: this.state.curPage - 1,
       });
       return;
-    } else if (e.target.value === ">") {
+    } else if (e.target.value === "＞") {
       this.setState({
         curPage: this.state.curPage + 1,
       })
