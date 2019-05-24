@@ -102,6 +102,7 @@ class App extends React.Component {
             search_text={this.state.search_text}
             clearSearchText={this.clearSearchText} />
         </div>
+        <div className="seperator16"></div>
         <div className='ratingTable'>
           <RatingTable ratings={this.state.ratings} />
         </div>

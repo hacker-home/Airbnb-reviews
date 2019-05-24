@@ -67,7 +67,7 @@ class ShowOneReview extends React.Component {
         <div className="sentence">
           {this.handleSearchTextInSentence()}
         </div>
-        <div className="seperator"></div>
+        <div className="seperator24"></div>
       </div>
     );
   }

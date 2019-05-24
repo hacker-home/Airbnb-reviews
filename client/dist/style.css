@@ -145,9 +145,16 @@ div {
   line-height: 1.375em !important;
   color: #484848 !important;
 }
-.seperator{
+.seperator24{
   margin-top: 24px;
   margin-bottom: 24px;
+  border-bottom-style: solid;
+  border-bottom-width: var(--border-rule-border-width, 1px) !important;
+  border-bottom-color: var(--color-divider, #EBEBEB) !important;
+}
+.seperator16{
+  margin-top: 16px;
+  margin-bottom: 16px;
   border-bottom-style: solid;
   border-bottom-width: var(--border-rule-border-width, 1px) !important;
   border-bottom-color: var(--color-divider, #EBEBEB) !important;
