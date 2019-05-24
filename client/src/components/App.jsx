@@ -1,9 +1,9 @@
-// import React from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import RatingTable from './RatingTable.jsx';
 import ReviewRender from './ReviewRender.jsx';
 
+import style from '../../dist/style.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -91,17 +91,16 @@ class App extends React.Component {
   }
 
   render() {
+
     return (
       <div className="rew_board" >
         <div className="reviewAndSearchBar">
           <div className='rev_count'>{this.state.num_reviews} Reviews </div>
-          <div className='outerSearchBar'>
-            <SearchBar original_data={this.state.original_data}
-              editSearchText={this.editSearchText}
-              dataSlicer={this.dataSlicer.bind(this)}
-              search_text={this.state.search_text}
-              clearSearchText={this.clearSearchText} />
-          </div>
+          <SearchBar original_data={this.state.original_data}
+            editSearchText={this.editSearchText}
+            dataSlicer={this.dataSlicer.bind(this)}
+            search_text={this.state.search_text}
+            clearSearchText={this.clearSearchText} />
         </div>
         <div className='ratingTable'>
           <RatingTable ratings={this.state.ratings} />

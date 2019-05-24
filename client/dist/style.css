@@ -24,6 +24,9 @@ body {
 div {
   display: block;
 }
+.rew_board {
+  width: 600px;
+}
 .reviewAndSearchBar {
   display: table;
   width: 100%;
@@ -41,33 +44,45 @@ div {
   padding-bottom: 2px !important;
 }
 .outerSearchBar {
-  width: 205px;
-  height: 36px;
+  width: 203px;
+  height: 33px;
   display: table-cell;
   border-width: 1px !important;
   border-style: solid !important;
-  border-color: rgb(235, 235, 235) !important;
   border-radius: 4px !important;
-  float: bottom;
   padding-top: 2px;
 }
-.outerSearchBar:hover {
-  border-color: #008489;
+.searchBar{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
 }
-.cancelSearchButton{
-  display: inline-block;
+.inlineForm{
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
 }
-
 .searchTextArea{
+  display: block;
   width: 168px;
   height: 22px;
-  padding: 5px 1px;
+  padding: 0px;
   border: transparent;
   font-size: var(--font-form-element-font-size, 14px) !important;
   font-family: var(--font-form-element-font-family, Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif) !important;
   color: #484848 !important;
   background-color: transparent !important;
-  
+}
+.cancelSearchButton{
+  display: block;
+  float: right;
+  font-size: 13px;
+  width: 12px;
+  height: 12px;
+  padding: 0px;
+  border: transparent;
+  cursor: pointer;
+  background-color: transparent;
 }
 .rating_table{
   display: block;

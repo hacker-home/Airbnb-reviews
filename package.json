@@ -40,6 +40,7 @@
     "file-system": "^2.2.2",
     "jest": "^24.8.0",
     "mongoose-auto-increment": "^5.0.1",
+    "style-loader": "^0.23.1",
     "webpack": "^4.31.0",
     "webpack-cli": "^3.3.2"
   },

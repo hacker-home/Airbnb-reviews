@@ -1,6 +1,9 @@
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      search_border_color: "rgb(235, 235, 235)"
+    }
   }
   // <SearchBar original_data={this.state.original_data} 
   //           showSearchResult={this.showSearchResult}
@@ -22,35 +25,51 @@ class SearchBar extends React.Component {
     }
     data.forEach((item) => {
       let words = item.sentence.split(/\b/);
-      if(words.indexOf(search_text) >= 0) {
+      if (words.indexOf(search_text) >= 0) {
         res.push(item);
       }
     });
     this.props.dataSlicer(res);
   }
 
+  testOnFunction(e) {
+    e.preventDefault();
+    // console.log('hi')
+    this.setState({
+      search_border_color: "#008489",
+    })
+  }
+  // onChange={this.props.editSearchText}
   render() {
-    if(this.props.search_text.length === 0) {
+    if (this.props.search_text.length === 0) {
       return (
-        <span className="searchBar">
-          <span>
-            <form onSubmit={this.submitSearch.bind(this)}>
-              <input className="searchTextArea" type="text" id="searchTextArea" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
-            </form>
+        <div className='outerSearchBar' style={{borderColor:this.state.search_border_color}}>
+          <span className="searchBar">
+            <span>
+              <form onSubmit={this.submitSearch.bind(this)}>
+                <input className="searchTextArea" type="text" id="searchTextArea" placeholder="Search reviews"
+                  onClick={this.testOnFunction.bind(this)}
+                  onChange={this.props.editSearchText}></input>
+              </form>
+            </span>
           </span>
-        </span>
+        </div>
       )
     } else {
       //show cancellation button while the text bar in not empty
       return (
-        <span className="searchBar">
+        <div className='outerSearchBar' style={{borderColor:this.state.search_border_color}}>
           <span>
-            <form onSubmit={this.submitSearch.bind(this)}>
-              <input className="searchTextArea" type="text" id="searchTextArea" placeholder="Search reviews" onChange={this.props.editSearchText}></input>
-            </form>
+            <span className="searchBar">
+              <form className="inlineForm" onSubmit={this.submitSearch.bind(this)}>
+                <input className="searchTextArea" type="text" id="searchTextArea" placeholder="Search reviews"
+                  onClick={this.testOnFunction.bind(this)}
+                  onChange={this.props.editSearchText}></input>
+              </form>
+            <button className="cancelSearchButton" onClick={this.props.clearSearchText}>Ｘ</button>
+            </span>
           </span>
-          <button className="cancelSearchButton" onClick={this.props.clearSearchText}>X</button>
-        </span>
+        </div>
       )
     }
   }
