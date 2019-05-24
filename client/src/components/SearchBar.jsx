@@ -39,7 +39,25 @@ class SearchBar extends React.Component {
       search_border_color: "#008489",
     })
   }
-  // onChange={this.props.editSearchText}
+  //add a event listener: change color back while click outside.
+  componentDidMount() {
+    document.addEventListener('mousedown', this.clickOutside.bind(this));
+  }
+
+  clickOutside() {
+    this.setState({
+      search_border_color: "rgb(235, 235, 235)",
+    })
+  }
+
+  componentWillMount() {
+    document.removeEventListener('mousedown', this.clickOutside);
+  }
+
+
+
+
+
   render() {
     if (this.props.search_text.length === 0) {
       return (
