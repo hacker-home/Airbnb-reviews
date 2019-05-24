@@ -91,7 +91,7 @@ class App extends React.Component {
   }
 
   render() {
-
+    
     return (
       <div className="rew_board" >
         <div className="reviewAndSearchBar">
