@@ -1,8 +1,9 @@
-// import React from 'react';
 import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import RatingTable from './RatingTable.jsx';
 import ReviewRender from './ReviewRender.jsx';
+
+import style from '../../dist/style.css';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -84,25 +85,29 @@ class App extends React.Component {
     e.preventDefault();
     this.setState({
       search_text: "",
-    })
+    });
     document.getElementById("searchTextArea").value = "";
+    this.dataSlicer(this.state.original_data);
   }
 
   render() {
+    
     return (
-      <div className="rew_board">
-        <div className='rev_count'>{this.state.num_reviews} reviews
-        <SearchBar original_data={this.state.original_data} 
-            editSearchText={this.editSearchText} 
+      <div className="rew_board" >
+        <div className="reviewAndSearchBar">
+          <div className='rev_count'>{this.state.num_reviews} Reviews </div>
+          <SearchBar original_data={this.state.original_data}
+            editSearchText={this.editSearchText}
             dataSlicer={this.dataSlicer.bind(this)}
             search_text={this.state.search_text}
-            clearSearchText={this.clearSearchText}/>
+            clearSearchText={this.clearSearchText} />
         </div>
+        <div className="seperator16"></div>
         <div className='ratingTable'>
           <RatingTable ratings={this.state.ratings} />
         </div>
         <div className='review_table'>
-          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text}/>
+          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text} />
         </div>
       </div>
     )
