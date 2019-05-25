@@ -44,6 +44,10 @@ div {
   padding-top: 2px !important;
   padding-bottom: 2px !important;
 }
+.scopeImg{
+  padding-left: 7px;
+  padding-right: 7px;
+}
 
 .ratingName{
   width: 50%;
