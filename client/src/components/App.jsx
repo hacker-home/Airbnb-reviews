@@ -106,9 +106,7 @@ class App extends React.Component {
     })
   }
 
-  render() {
-    const overall_rating = 0;
-    
+  render() {    
     return (
       <div className="rew_board" >
         <div className="reviewAndSearchBar">

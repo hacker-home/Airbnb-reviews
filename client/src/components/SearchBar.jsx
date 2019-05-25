@@ -30,6 +30,7 @@ class SearchBar extends React.Component {
       }
     });
     this.props.dataSlicer(res);
+    this.props.setCurPage(0);
   }
 
   testOnFunction(e) {
