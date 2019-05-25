@@ -205,7 +205,7 @@ float: right;
   display: table-cell;
   border: solid white 2px;
   border-radius: 50%;
-  background: #008489;
+  /* background: #008489; */
 }
 
 .readmore {
