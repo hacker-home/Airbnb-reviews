@@ -16,9 +16,11 @@ class App extends React.Component {
       overall_rating: 0,
       num_reviews: 0,
       search_text: "",
+      curPage:0,
     }
     this.editSearchText = this.editSearchText.bind(this);
     this.clearSearchText = this.clearSearchText.bind(this);
+    this.setCurPage = this.setCurPage.bind(this);
   };
 
   // fetch data while enter the website
@@ -98,6 +100,12 @@ class App extends React.Component {
     this.dataSlicer(this.state.original_data);
   }
 
+  setCurPage(page) {
+    this.setState({
+      curPage:page,
+    })
+  }
+
   render() {
     const overall_rating = 0;
     
@@ -110,14 +118,15 @@ class App extends React.Component {
             editSearchText={this.editSearchText}
             dataSlicer={this.dataSlicer.bind(this)}
             search_text={this.state.search_text}
-            clearSearchText={this.clearSearchText} />
+            clearSearchText={this.clearSearchText}
+            setCurPage={this.setCurPage} />
         </div>
         <div className="seperator16"></div>
         <div className='ratingTable'>
           <RatingTable ratings={this.state.ratings} />
         </div>
         <div className='review_table'>
-          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text} />
+          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text} curPage={this.state.curPage} setCurPage={this.setCurPage}/>
         </div>
       </div>
     )

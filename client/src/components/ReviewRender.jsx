@@ -4,40 +4,32 @@ import PageButtons from './PageButtons.jsx';
 class ReviewRender extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      curPage: 0
-    }
+    
   }
 
   changePage(e) {
     e.preventDefault();
     if (e.target.value === "＜") {
-      this.setState({
-        curPage: this.state.curPage - 1,
-      });
+      this.props.setCurPage(this.props.curPage - 1);
       return;
     } else if (e.target.value === "＞") {
-      this.setState({
-        curPage: this.state.curPage + 1,
-      })
+      this.props.setCurPage(this.props.curPage + 1);
       return;
     }
-    this.setState({
-      curPage: e.target.value - 1,
-    });
+    this.props.setCurPage(e.target.value - 1);
     return;
   }
 
   render() {
-    if (this.props.data[this.state.curPage]) {
+    if (this.props.data[this.props.curPage]) {
       return (
         <div>
           <div>
-            {this.props.data[this.state.curPage].map((item) => {
+            {this.props.data[this.props.curPage].map((item) => {
               return <ShowOneReview key={item.id + 'rev'} review={item} search_text={this.props.search_text} />
             })}
           </div>
-          <PageButtons curPage={this.state.curPage} data={this.props.data} changePage={this.changePage.bind(this)} />
+          <PageButtons curPage={this.props.curPage} data={this.props.data} changePage={this.changePage.bind(this)} />
           <br />
           <br />
         </div>
