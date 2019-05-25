@@ -2,6 +2,7 @@ import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import RatingTable from './RatingTable.jsx';
 import ReviewRender from './ReviewRender.jsx';
+import RatingStar from './RatingStar.jsx'
 
 import style from '../../dist/style.css';
 class App extends React.Component {
@@ -12,6 +13,7 @@ class App extends React.Component {
       rev_data: [[]],
       room_id: 1,
       ratings: {},
+      overall_rating: 0,
       num_reviews: 0,
       search_text: "",
     }
@@ -55,10 +57,16 @@ class App extends React.Component {
     }
     let average = {};
     for (let key in sum_rating) {
-      average[key] = (sum_rating[key] / rev_array.length).toFixed(1);
+      average[key] = Number((sum_rating[key] / rev_array.length).toFixed(1));
     }
+    let overall_rating = 0;
+    for (let key in average) {
+      overall_rating += Number(average[key]);
+    }
+    overall_rating = Number((overall_rating / 6).toFixed(1));
     this.setState({
       ratings: average,
+      overall_rating,
     });
   }
 
@@ -91,11 +99,13 @@ class App extends React.Component {
   }
 
   render() {
+    const overall_rating = 0;
     
     return (
       <div className="rew_board" >
         <div className="reviewAndSearchBar">
-          <div className='rev_count'>{this.state.num_reviews} Reviews </div>
+          <div className='rev_count'>{this.state.num_reviews} Reviews</div>
+          <span className='topRatingStar'><RatingStar rating={this.state.overall_rating}/></span>
           <SearchBar original_data={this.state.original_data}
             editSearchText={this.editSearchText}
             dataSlicer={this.dataSlicer.bind(this)}
