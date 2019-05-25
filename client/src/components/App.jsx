@@ -98,6 +98,7 @@ class App extends React.Component {
     });
     document.getElementById("searchTextArea").value = "";
     this.dataSlicer(this.state.original_data);
+    this.setCurPage(0);
   }
 
   setCurPage(page) {
