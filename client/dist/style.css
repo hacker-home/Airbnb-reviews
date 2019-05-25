@@ -30,11 +30,11 @@ div {
 .reviewAndSearchBar {
   display: table;
   width: 100%;
-  padding-top: 6px;
+  padding-top: 8px;
 }
 .rev_count {
   display: table-cell;
-  width: 150px;
+  width: 29%;
   word-wrap: break-word !important;
   font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
   font-size: 24px !important;
@@ -205,7 +205,7 @@ float: right;
   display: table-cell;
   border: solid white 2px;
   border-radius: 50%;
-  /* background: #008489; */
+  cursor: pointer;
 }
 
 .readmore {
