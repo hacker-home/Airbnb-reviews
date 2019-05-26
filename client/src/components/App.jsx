@@ -2,6 +2,7 @@ import axios from 'axios';
 import SearchBar from './SearchBar.jsx';
 import RatingTable from './RatingTable.jsx';
 import ReviewRender from './ReviewRender.jsx';
+import RatingStar from './RatingStar.jsx'
 
 import style from '../../dist/style.css';
 class App extends React.Component {
@@ -12,11 +13,14 @@ class App extends React.Component {
       rev_data: [[]],
       room_id: 1,
       ratings: {},
+      overall_rating: 0,
       num_reviews: 0,
       search_text: "",
+      curPage:0,
     }
     this.editSearchText = this.editSearchText.bind(this);
     this.clearSearchText = this.clearSearchText.bind(this);
+    this.setCurPage = this.setCurPage.bind(this);
   };
 
   // fetch data while enter the website
@@ -55,10 +59,16 @@ class App extends React.Component {
     }
     let average = {};
     for (let key in sum_rating) {
-      average[key] = (sum_rating[key] / rev_array.length).toFixed(1);
+      average[key] = Number((sum_rating[key] / rev_array.length).toFixed(1));
     }
+    let overall_rating = 0;
+    for (let key in average) {
+      overall_rating += Number(average[key]);
+    }
+    overall_rating = Number((overall_rating / 6).toFixed(1));
     this.setState({
       ratings: average,
+      overall_rating,
     });
   }
 
@@ -88,26 +98,34 @@ class App extends React.Component {
     });
     document.getElementById("searchTextArea").value = "";
     this.dataSlicer(this.state.original_data);
+    this.setCurPage(0);
   }
 
-  render() {
-    
+  setCurPage(page) {
+    this.setState({
+      curPage:page,
+    })
+  }
+
+  render() {    
     return (
       <div className="rew_board" >
         <div className="reviewAndSearchBar">
-          <div className='rev_count'>{this.state.num_reviews} Reviews </div>
+          <div className='rev_count'>{this.state.num_reviews} Reviews</div>
+          <span className='topRatingStar'><RatingStar rating={this.state.overall_rating}/></span>
           <SearchBar original_data={this.state.original_data}
             editSearchText={this.editSearchText}
             dataSlicer={this.dataSlicer.bind(this)}
             search_text={this.state.search_text}
-            clearSearchText={this.clearSearchText} />
+            clearSearchText={this.clearSearchText}
+            setCurPage={this.setCurPage} />
         </div>
         <div className="seperator16"></div>
         <div className='ratingTable'>
           <RatingTable ratings={this.state.ratings} />
         </div>
         <div className='review_table'>
-          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text} />
+          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text} curPage={this.state.curPage} setCurPage={this.setCurPage}/>
         </div>
       </div>
     )

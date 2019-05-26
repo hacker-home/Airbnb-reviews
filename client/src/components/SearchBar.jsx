@@ -30,6 +30,7 @@ class SearchBar extends React.Component {
       }
     });
     this.props.dataSlicer(res);
+    this.props.setCurPage(0);
   }
 
   testOnFunction(e) {
@@ -39,13 +40,35 @@ class SearchBar extends React.Component {
       search_border_color: "#008489",
     })
   }
-  // onChange={this.props.editSearchText}
+  //add a event listener: change color back while click outside.
+  componentDidMount() {
+    document.addEventListener('mousedown', this.clickOutside.bind(this));
+  }
+
+  clickOutside() {
+    this.setState({
+      search_border_color: "rgb(235, 235, 235)",
+    })
+  }
+
+  componentWillMount() {
+    document.removeEventListener('mousedown', this.clickOutside);
+  }
+
+
+
+
+
   render() {
+    const scopeStyle = {height: "1em", width: "1em", display: "block", fill: "currentcolor",}
     if (this.props.search_text.length === 0) {
       return (
         <div className='outerSearchBar' style={{ borderColor: this.state.search_border_color }}>
-          <span className="searchBar">
-            <span>
+          <span>
+            <span className="searchBar">
+              <span className="scopeImg">
+              <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={scopeStyle}><path d="m10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6m12.6 3.8-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c .3.3.8.3 1.1 0s .4-.8.1-1.1" fillRule="evenodd"></path></svg>
+              </span>
               <form onSubmit={this.submitSearch.bind(this)}>
                 <input className="searchTextArea" type="text" id="searchTextArea" placeholder="Search reviews"
                   onClick={this.testOnFunction.bind(this)}
@@ -63,6 +86,9 @@ class SearchBar extends React.Component {
         <div className='outerSearchBar' style={{ borderColor: this.state.search_border_color }}>
           <span>
             <span className="searchBar">
+            <span className="scopeImg">
+            <svg viewBox="0 0 24 24" role="presentation" aria-hidden="true" focusable="false" style={scopeStyle}><path d="m10.4 18.2c-4.2-.6-7.2-4.5-6.6-8.8.6-4.2 4.5-7.2 8.8-6.6 4.2.6 7.2 4.5 6.6 8.8-.6 4.2-4.6 7.2-8.8 6.6m12.6 3.8-5-5c1.4-1.4 2.3-3.1 2.6-5.2.7-5.1-2.8-9.7-7.8-10.5-5-.7-9.7 2.8-10.5 7.9-.7 5.1 2.8 9.7 7.8 10.5 2.5.4 4.9-.3 6.7-1.7v.1l5 5c .3.3.8.3 1.1 0s .4-.8.1-1.1" fillRule="evenodd"></path></svg>
+            </span>
               <form className="inlineForm" onSubmit={this.submitSearch.bind(this)}>
                 <input className="searchTextArea" type="text" id="searchTextArea" placeholder="Search reviews"
                   onClick={this.testOnFunction.bind(this)}
