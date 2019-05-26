@@ -5,9 +5,9 @@ class RatingStar extends React.Component {
 
   render() {
     return (
-      <span className='StarBox'>
-        <span className='outerStar'>
-          <span className='innerStar' style={{width: `${this.props.rating * 22}px`}}></span>
+      <span className='StarBoxInReviews'>
+        <span className='outerStarInReviews'>
+          <span className='innerStarInReviews' style={{width: `${this.props.rating * 22}px`}}></span>
         </span>
       </span>
     )
