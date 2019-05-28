@@ -1,6 +1,6 @@
 import ShowOneReview from './ShowOneReview.jsx'
 import PageButtons from './PageButtons.jsx';
-
+import React from 'react';
 class ReviewRender extends React.Component {
   constructor(props) {
     super(props);

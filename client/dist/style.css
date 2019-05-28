@@ -26,6 +26,7 @@ div {
 }
 .rew_board {
   width: 600px;
+  padding-left: 45px;
 }
 .reviewAndSearchBar {
   display: table;
@@ -231,7 +232,7 @@ float: right;
 .pageButtonBar{
   margin-block-start: 1em;
   margin-block-end: 1em;
-  padding-inline-start: 40px;
+  /* padding-inline-start: 40px; */
 }
 .arrowButton {
   width: 32px;
@@ -254,9 +255,9 @@ float: right;
   color: #008489;
   border: transparent 1px;
   border-radius: 50%;
-  margin-left: 8px;
-  margin-right: 8px;
-  font-size: 16px !important;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-size: 13px !important;
   text-align: center;
 }
 .pageButton:hover {
