@@ -1,4 +1,6 @@
 import React from 'react';
+import style from '../../dist/style.css';
+
 class Highlighter extends React.Component {
   constructor(props) {
     super(props);
@@ -12,7 +14,7 @@ class Highlighter extends React.Component {
 
     //highlight functions adds searched word into a strong tag
     const highlight = ( children, count ) => (
-      <strong key={this.props.id+'hi'+count} className="highlighted-text">{children}</strong>
+      <strong key={this.props.id+'hi'+count} className={style['highlighted-text']}>{children}</strong>
     );
 
     // highlightedSentence stores normal words and highlighted word.

@@ -1,6 +1,8 @@
 // import Highlighter from 'react-highlight-words';
 import Highlighter from './Highlighter.jsx'
 import React from 'react';
+import style from '../../dist/style.css';
+
 
 const CHAR_THRESHOLD = 250;
 const WORDS_THRESHOLD = 50;
@@ -36,7 +38,7 @@ class ShowOneReview extends React.Component {
         newSentence += '...'
         return (
           <div key={this.props.review.id + 'r'}>{newSentence}
-            <span className='readmore' key={this.props.review.id + 'rdm'} onClick={this.showContent.bind(this)}>
+            <span className={style.readmore} key={this.props.review.id + 'rdm'} onClick={this.showContent.bind(this)}>
               Read more
           </span>
           </div>
@@ -60,20 +62,20 @@ class ShowOneReview extends React.Component {
     let profilePicNum = this.props.review.profilePicNum;
     let url = `https://s3.us-east-2.amazonaws.com/wtsesun/fakeprofilepics/${gender}/${profilePicNum}.jpg`;
     return (
-      <div className="review" key={this.props.review.id}>
-        <div className="pictureNameAndDate">
-          <div className="profile_picture" key={this.props.review.id + 'p'}
+      <div className={style.review} key={this.props.review.id}>
+        <div className={style.pictureNameAndDate}>
+          <div className={style.profile_picture} key={this.props.review.id + 'p'}
           style={{backgroundImage:`url(${url})`}}
           ></div>
-          <div className="nameAndDate">
-            <div className="name" key={this.props.review.id + 'n'}>{this.props.review.name}</div>
-            <div className="date" key={this.props.review.id + 'd'}>{this.props.review.date}</div>
+          <div className={style.nameAndDate}>
+            <div className={style.name} key={this.props.review.id + 'n'}>{this.props.review.name}</div>
+            <div className={style.date} key={this.props.review.id + 'd'}>{this.props.review.date}</div>
           </div>
         </div>
-        <div className="sentence">
+        <div className={style.sentence}>
           {this.handleSearchTextInSentence()}
         </div>
-        <div className="seperator24"></div>
+        <div className={style.seperator24}></div>
       </div>
     );
   }
