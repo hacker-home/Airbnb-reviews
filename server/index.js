@@ -10,9 +10,7 @@ const PORT = 3001;
 
 app.use(bodyParser.json());
 app.use(cors());
-// app.use(express.static(path.join(__dirname, '../client/dist')));
 app.use(express.static(`${__dirname}/../client/dist`));
-// app.use(bodyParser.urlencoded());
 
 app.get('/reviews/:room_id', (req, res) => {
   mongoose.connect('mongodb://localhost:27017/airbnb', { useNewUrlParser: true });
@@ -27,11 +25,6 @@ app.get('/reviews/:room_id', (req, res) => {
       res.status(500).send("Fail to fetch");
     })
 });
-
-// app.get('/:roomId', function(req, res) {
-//   // res.header("X-Content-Type", "text/javascript");
-//   res.sendFile(path.join(__dirname, '/../client/dist/index.html'))
-// });
 
 
 app.listen(PORT, ()=>{
