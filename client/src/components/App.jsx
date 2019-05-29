@@ -3,6 +3,7 @@ import SearchBar from './SearchBar.jsx';
 import RatingTable from './RatingTable.jsx';
 import ReviewRender from './ReviewRender.jsx';
 import RatingStar from './RatingStar.jsx'
+import React from 'react';
 
 import style from '../../dist/style.css';
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
     this.state = {
       original_data: [],
       rev_data: [[]],
-      room_id: 1,
+      room_id: Math.floor(Math.random()*99),
       ratings: {},
       overall_rating: 0,
       num_reviews: 0,
@@ -25,7 +26,7 @@ class App extends React.Component {
 
   // fetch data while enter the website
   componentDidMount() {
-    axios.get(`http://localhost:3001/reviews/?room_id=${this.state.room_id}`)
+    axios.get(`/reviews/${window.location.href.match(/id\s*=\s*(.*)/)[1]}`)
       .then((response) => {
         this.dataSlicer(response.data[0].reviews);
         this.setState({
@@ -37,6 +38,7 @@ class App extends React.Component {
       .catch(() => {
         console.log("error");
       });
+
   };
 
   //calculate average ratings over all reviews
@@ -110,6 +112,7 @@ class App extends React.Component {
   render() {    
     return (
       <div className="rew_board" >
+        <div className="seperator24"></div>
         <div className="reviewAndSearchBar">
           <div className='rev_count'>{this.state.num_reviews} Reviews</div>
           <span className='topRatingStar'><RatingStar rating={this.state.overall_rating}/></span>

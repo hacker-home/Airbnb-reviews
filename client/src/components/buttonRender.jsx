@@ -1,3 +1,5 @@
+import React from 'react';
+
 let buttonRender = function (curPage, totalPages, isReview, changePage) {
   const curPageStyle = {background:'#008489', color:'white'}
   //  Edge case: if no reviews, Print out "No reviews" and exit buttonRender

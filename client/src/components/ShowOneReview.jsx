@@ -1,5 +1,6 @@
 // import Highlighter from 'react-highlight-words';
 import Highlighter from './Highlighter.jsx'
+import React from 'react';
 
 const CHAR_THRESHOLD = 250;
 const WORDS_THRESHOLD = 50;
