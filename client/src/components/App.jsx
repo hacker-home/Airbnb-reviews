@@ -111,11 +111,11 @@ class App extends React.Component {
 
   render() {    
     return (
-      <div className="rew_board" >
-        <div className="seperator24"></div>
-        <div className="reviewAndSearchBar">
-          <div className='rev_count'>{this.state.num_reviews} Reviews</div>
-          <span className='topRatingStar'><RatingStar rating={this.state.overall_rating}/></span>
+      <div className={style.rew_board} >
+        <div className={style.seperator24}></div>
+        <div className={style.reviewAndSearchBar}>
+          <div className={style.rev_count}>{this.state.num_reviews} Reviews</div>
+          <span className={style.topRatingStar}><RatingStar rating={this.state.overall_rating}/></span>
           <SearchBar original_data={this.state.original_data}
             editSearchText={this.editSearchText}
             dataSlicer={this.dataSlicer.bind(this)}
@@ -123,11 +123,11 @@ class App extends React.Component {
             clearSearchText={this.clearSearchText}
             setCurPage={this.setCurPage} />
         </div>
-        <div className="seperator16"></div>
-        <div className='ratingTable'>
+        <div className={style.seperator16}></div>
+        <div className={style.ratingTable}>
           <RatingTable ratings={this.state.ratings} />
         </div>
-        <div className='review_table'>
+        <div className={style.review_table}>
           <ReviewRender data={this.state.rev_data} search_text={this.state.search_text} curPage={this.state.curPage} setCurPage={this.setCurPage}/>
         </div>
       </div>

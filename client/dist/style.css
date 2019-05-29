@@ -1,12 +1,7 @@
 
-/* element.style {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-left: 0;
-  margin-right: 0;
-} */
-
-body {
+.rew_board {
+  display: block;
+  width: 600px;
   font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
   font-size: 14px;
   line-height: 1.43;
@@ -15,18 +10,6 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  display: block;
-}
-
-div {
-  display: block;
-}
-.rew_board {
-  width: 600px;
-  /* padding-left: 45px; */
 }
 .reviewAndSearchBar {
   display: table;
