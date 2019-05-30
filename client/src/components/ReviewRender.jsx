@@ -1,8 +1,6 @@
 import ShowOneReview from './ShowOneReview.jsx'
 import PageButtons from './PageButtons.jsx';
 import React from 'react';
-import $ from 'jquery';
-import style from '../../dist/style.css';
 
 class ReviewRender extends React.Component {
   constructor(props) {
