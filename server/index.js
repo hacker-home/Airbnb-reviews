@@ -13,7 +13,7 @@ app.use(cors());
 app.use(express.static(`${__dirname}/../client/dist`));
 
 app.get('/reviews/:room_id', (req, res) => {
-  mongoose.connect('mongodb://localhost:27017/airbnb', { useNewUrlParser: true });
+  mongoose.connect('mongodb://172.17.0.2:27017/airbnb', { useNewUrlParser: true });
   const target = {room_id: req.params.room_id};
   db.Reviews.find(target)
     .then((data) => {
