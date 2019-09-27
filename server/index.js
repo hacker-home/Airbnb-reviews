@@ -29,4 +29,5 @@ app.get('/reviews/:room_id', (req, res) => {
 
 app.listen(PORT, ()=>{
   console.log("Server is now listening on port:", PORT);
+  console.log(`Visit website at http://localhost:${PORT}/:id=1`);
 });
