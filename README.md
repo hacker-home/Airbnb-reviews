@@ -2,12 +2,17 @@
 
 > Project description
 
-## Related Projects
+## How to run this projects
 
-  - https://github.com/HackerHome/
-  - https://github.com/HackerHome/
-  - https://github.com/HackerHome/
-  - https://github.com/HackerHome/
+```sh
+1.
+  npm install
+2. seed the data(please make sure you have mongoDB installed on your device)
+  npm run bulbasaur
+3. 
+  npm start
+```
+
 
 ## Table of Contents
 
