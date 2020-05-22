@@ -5,7 +5,7 @@
  * Output: An array of random reviews
  */
 
-const casual = require('casual');
+const casual = require("casual");
 
 const reviewGenerator = function (numberOfData) {
   let res = [];
@@ -14,7 +14,7 @@ const reviewGenerator = function (numberOfData) {
     const curData = {};
 
     //id
-    const id = i+1;
+    const id = i + 1;
     curData.id = id;
     // name
     const name = casual.first_name;
@@ -33,7 +33,7 @@ const reviewGenerator = function (numberOfData) {
     curData.profilePicNum = profilePicNum;
 
     // date
-    let formate = 'MMMM YYYY';
+    let formate = "MMMM YYYY";
     const date = casual.date(formate);
     curData.date = date;
 
@@ -68,18 +68,21 @@ const reviewGenerator = function (numberOfData) {
     curData.value_rating = Number(value_rating);
 
     // overall_rating = ratings above / 6
-    curData.overall_rating = Number(((curData.accuracy_rating
-       + curData.communication_rating
-       + curData.cleanliness_rating
-       + curData.location_rating
-       + curData.check_in_rating
-       + curData.value_rating) / 6)
-      .toFixed(1));
+    curData.overall_rating = Number(
+      (
+        (curData.accuracy_rating +
+          curData.communication_rating +
+          curData.cleanliness_rating +
+          curData.location_rating +
+          curData.check_in_rating +
+          curData.value_rating) /
+        6
+      ).toFixed(1)
+    );
     res.push(curData);
   }
 
   return res;
 };
-
 
 module.exports = { reviewGenerator };
