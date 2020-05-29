@@ -12,12 +12,12 @@ class App extends React.Component {
     this.state = {
       original_data: [],
       rev_data: [[]],
-      room_id: Math.floor(Math.random()*99),
+      room_id: Math.floor(Math.random() * 99),
       ratings: {},
       overall_rating: 0,
       num_reviews: 0,
       search_text: "",
-      curPage:0,
+      curPage: 0,
     }
     this.editSearchText = this.editSearchText.bind(this);
     this.clearSearchText = this.clearSearchText.bind(this);
@@ -26,6 +26,7 @@ class App extends React.Component {
 
   // fetch data while enter the website
   componentDidMount() {
+    console.log('force a git change');
     axios.get(`/reviews/${window.location.href.match(/id\s*=\s*(.*)/)[1]}`)
       .then((response) => {
         this.dataSlicer(response.data[0].reviews);
@@ -105,17 +106,17 @@ class App extends React.Component {
 
   setCurPage(page) {
     this.setState({
-      curPage:page,
+      curPage: page,
     })
   }
 
-  render() {    
+  render() {
     return (
       <div className={style.rew_board} >
         <div className={style.seperator24}></div>
         <div className={style.reviewAndSearchBar}>
           <div className={style.rev_count}>{this.state.num_reviews} Reviews</div>
-          <span className={style.topRatingStar}><RatingStar rating={this.state.overall_rating}/></span>
+          <span className={style.topRatingStar}><RatingStar rating={this.state.overall_rating} /></span>
           <SearchBar original_data={this.state.original_data}
             editSearchText={this.editSearchText}
             dataSlicer={this.dataSlicer.bind(this)}
@@ -128,7 +129,7 @@ class App extends React.Component {
           <RatingTable ratings={this.state.ratings} />
         </div>
         <div className={style.review_table}>
-          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text} curPage={this.state.curPage} setCurPage={this.setCurPage}/>
+          <ReviewRender data={this.state.rev_data} search_text={this.state.search_text} curPage={this.state.curPage} setCurPage={this.setCurPage} />
         </div>
       </div>
     )
