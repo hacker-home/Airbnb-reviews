@@ -1,11 +1,11 @@
 const fs = require("fs");
 const Database = require("arangojs").Database;
 const aql = require("arangojs");
-const db = new Database("http://127.0.0.1:8529");
-db.useBasicAuth("root", "datasaver");
+const db = new Database(process.env.ARANGOLOCAL);
+db.useBasicAuth(process.env.ARANGOUSER, process.env.ARANGOPW);
 
-db._createDatabase("mydb");
-db._useDatabase("mydb");
+db._createDatabase(process.env.ARANGODB);
+db._useDatabase(process.env.ARANGODB);
 
 let myDB = db.createDatabase("myLilDB_b", [{ username: "root" }]);
 let collection = db.collection("third_Collection");

@@ -7,19 +7,22 @@ const app = express();
 const path = require("path");
 const pg = require("pg");
 const { Client } = require("pg");
+require('dotenv').config();
 
-const PORT = 3004;
+const PORT = process.env.PORT;
+
+
 
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(`${__dirname}/../client/dist`));
 
 const client = new Client({
-  host: "localhost",
-  port: 5432,
-  database: "airbnb",
-  user: "postgres",
-  password: "datasaver",
+  host: process.env.HOST,
+  port: process.env.PORT,
+  database: process.env.DATABASE,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
 });
 
 // shape of data -> response.data[0].reviews
