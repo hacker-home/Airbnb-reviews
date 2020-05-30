@@ -79,7 +79,6 @@ const reviewGenerator = function (numberOfData) {
         6
       ).toFixed(1)
     );
-    res.push(curData);
   }
 
   return res;

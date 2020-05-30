@@ -2,3 +2,8 @@
 /package-lock.json
 /.vscode/
 /aws-key/
+
+/jsontestarrayed.json/
+/massivedata.json/
+massivedata.json
+/client/dist/bundle.js/
