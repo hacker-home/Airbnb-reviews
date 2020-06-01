@@ -55,6 +55,7 @@ client.connect().then(() => {
     console.log('hitting');
     res.send('hitting');
   })
+  console.log('how is /reviews/ being appended to the urls /?id=4');
   app.get("/reviews/:room_id", (req, res) => {
     // app.get("/:id", (req, res) => {
     const target = { room_id: req.params.room_id };
