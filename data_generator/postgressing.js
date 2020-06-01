@@ -25,7 +25,7 @@ client
   .then(async () => {
     console.log("were connected");
     let parsed = JSON.parse(myJson);
-    let counter = 0;
+    let counter = 1;
     for (let item of parsed) {
       try {
         counter++;

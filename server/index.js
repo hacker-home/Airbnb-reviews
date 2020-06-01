@@ -1,37 +1,66 @@
 const mongoose = require("mongoose");
-const db = require("../database/schema.js");
+// const db = require("../database/schema.js");
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const path = require("path");
-const pg = require("pg");
 const { Client } = require("pg");
-require('dotenv').config();
+// require('dotenv').config();
 
-const PORT = process.env.PORT;
-
-
+const PORT = 3004;
 
 app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static(`${__dirname}/../client/dist`));
 
 const client = new Client({
-  host: process.env.HOST,
-  port: process.env.PORT,
-  database: process.env.DATABASE,
-  user: process.env.USER,
-  password: process.env.PASSWORD,
+  host: "localhost",
+  port: 5432,
+  database: "airbnb",
+  user: "postgres",
+  password: "datasaver",
 });
+
+// const client = new Client()
+// client.connect(err => {
+//   if (err) {
+//     console.error('connection error', err.stack)
+//   } else {
+//     console.log('connected')
+//   }
+// })
+// const client = new Client({
+//   host: process.env.HOST,
+//   port: process.env.DBPORT,
+//   database: process.env.DATABASE,
+//   user: process.env.USER,
+//   password: process.env.PASSWORD,
+// });
 
 // shape of data -> response.data[0].reviews
 
 //PostGres
+
+// client
+//   .connect()
+//   .then(() => console.log("connected"))
+//   .catch((err) => console.log("err", err));
+
+// client.query('select * from bnb_locations limit 1').then((data) => console.log('data', data)).catch((err) => console.log(err))
+
 client.connect().then(() => {
+  console.log('connected');
+  app.get("/:id", (req, res) => {
+    console.log('hitting');
+    res.send('hitting');
+  })
   app.get("/reviews/:room_id", (req, res) => {
+    // app.get("/:id", (req, res) => {
     const target = { room_id: req.params.room_id };
+    console.log('target', target);
     const id = Number(target.room_id);
+    console.log('id', id);
     client
       .query(`select * from bnb_reviews where loc_id = ${id}`)
       .then((data) => {
@@ -41,12 +70,15 @@ client.connect().then(() => {
         };
         res.send(arr);
       });
-  });
+  })
 
-  app.listen(PORT, () => {
-    console.log("Server is now listening on port:", PORT);
-    console.log(`Visit website at http://localhost:${PORT}/:id=1`);
-  });
+}).catch((err) => {
+  console.log('error !', err);
+})
+
+app.listen(PORT, () => {
+  console.log("Server is now listening on port:", PORT);
+  console.log(`Visit website at http://localhost:${PORT}/:id=1`);
 });
 
 // app.get("/reviews/:room_id", (req, res) => {
