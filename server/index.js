@@ -6,6 +6,10 @@ const cors = require("cors");
 const app = express();
 const path = require("path");
 const { Client } = require("pg");
+
+// import http from "k6/http";
+// import { check, sleep } from "k6";
+
 // require('dotenv').config();
 
 const PORT = 3004;
@@ -49,34 +53,36 @@ const client = new Client({
 
 // client.query('select * from bnb_locations limit 1').then((data) => console.log('data', data)).catch((err) => console.log(err))
 
-client.connect().then(() => {
-  console.log('connected');
-  app.get("/:id", (req, res) => {
-    console.log('hitting');
-    res.send('hitting');
+client
+  .connect()
+  .then(() => {
+    console.log("connected");
+    app.get("/:id", (req, res) => {
+      console.log("hitting");
+      res.send("hitting");
+    });
+    console.log("how is /reviews/ being appended to the urls /?id=4");
+    console.log("git update change");
+    app.get("/reviews/:room_id", (req, res) => {
+      // app.get("/:id", (req, res) => {
+      const target = { room_id: req.params.room_id };
+      console.log("target", target);
+      const id = Number(target.room_id);
+      console.log("id", id);
+      client
+        .query(`select * from bnb_reviews where loc_id = ${id}`)
+        .then((data) => {
+          let arr = [];
+          arr[0] = {
+            reviews: data.rows,
+          };
+          res.send(arr);
+        });
+    });
   })
-  console.log('how is /reviews/ being appended to the urls /?id=4');
-  console.log('git update change');
-  app.get("/reviews/:room_id", (req, res) => {
-    // app.get("/:id", (req, res) => {
-    const target = { room_id: req.params.room_id };
-    console.log('target', target);
-    const id = Number(target.room_id);
-    console.log('id', id);
-    client
-      .query(`select * from bnb_reviews where loc_id = ${id}`)
-      .then((data) => {
-        let arr = [];
-        arr[0] = {
-          reviews: data.rows,
-        };
-        res.send(arr);
-      });
-  })
-
-}).catch((err) => {
-  console.log('error !', err);
-})
+  .catch((err) => {
+    console.log("error !", err);
+  });
 
 app.listen(PORT, () => {
   console.log("Server is now listening on port:", PORT);
