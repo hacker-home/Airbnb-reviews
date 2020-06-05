@@ -3,14 +3,24 @@ const { Client } = require("pg");
 const fs = require("fs");
 const path = require("path");
 
-const fileName = "../actualData-Reviews-workingEdition.json";
+const fileName = "../actualData-Reviews-smallEdition.json";
+// const fileName = "../actualData-Reviews-workingEdition.json";
 
+// const myJson = "C:\Users\Peter\Desktop\SDC_data\actualData-massive";
 const myJson = fs.readFileSync(path.join(__dirname, fileName));
 
 // console.log("parse", JSON.parse(myJson));
 // for (let rev of myJson) {
 //   console.log("rev", rev);
 // }
+
+// const client = new Client({
+//   host: "ec2-34-218-234-151.us-west-2.compute.amazonaws.com",
+//   port: 5432,
+//   database: "airbnb",
+//   user: "postgres",
+//   password: "datasaver",
+// });
 
 const client = new Client({
   host: "localhost",
@@ -25,6 +35,7 @@ client
   .then(async () => {
     console.log("were connected");
     let parsed = JSON.parse(myJson);
+    // let counter = 1025;
     let counter = 1;
     for (let item of parsed) {
       try {
@@ -36,6 +47,7 @@ client
         console.log("counter", counter, "err", err);
       }
     }
+    console.log('counter', counter);
     client.end((err) => {
       console.log("client has disconnected");
       if (err) {

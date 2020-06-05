@@ -4,6 +4,7 @@ require("events").EventEmitter.defaultMaxListeners = 20;
 const casual = require("casual");
 
 const fileName = "./actualData-Reviews-smallEdition.json";
+// const fileName = "./actualData-Reviews-smallEdition.json";
 
 function randomNumber(min, max) {
   min = Math.ceil(min);
@@ -18,7 +19,7 @@ const drainProcess = () =>
   });
 console.time("lap");
 console.time("timer");
-let amountOfReviews = 20;
+let amountOfReviews = 200;
 
 async function safelyWriteReviews(dataArray) {
   writable.write("[");

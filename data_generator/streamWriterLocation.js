@@ -24,7 +24,7 @@ client
   .then(() => {
     console.log("connected via PG for locations!");
 
-    let amountOfLocations = 10;
+    let amountOfLocations = 100000;
 
     async function safelyInsertReviews() {
       for (let i = 0; i <= amountOfLocations; i++) {
